@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="billettkjøp.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <style>
         label{
             display: inline;
@@ -61,6 +62,8 @@
         Alle billetter
     </h2>
 
-    <button id="slettAlle">Slett alle billettene</button>
+    <label id="alleBilletter"> </label>
+
+    <button id="slettAlle" onclick="slettAlle()">Slett alle billettene</button>
 </body>
 </html>
