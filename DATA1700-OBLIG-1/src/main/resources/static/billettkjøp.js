@@ -17,13 +17,14 @@ function kjoepBillett(){
     localStorage.setItem("billettArray", JSON.stringify(billettArray));
 
     //Skriver ut array
-    console.log("Antall billetter: " + billettArray[0] + ", Fornavn: " + billettArray[1] +
+    console.log("Antall billetter: " + JSON.stringify(billettArray[0]) + ", Fornavn: " + billettArray[1] +
                 ", Etternavn: " + billettArray[2] + ", Telefonnummer: " + billettArray[3] +
                 ", Epost: " + billettArray[4]);
 
-    antall.value = "";
-    fNavn.value = "";
-    eNavn.value = "";
-    tlfNr.value = "";
-    epost.value = "";
+    document.getElementById("antall").value = ""
+    document.getElementById("fNavn").value = ""
+    document.getElementById("eNavn").value = ""
+    document.getElementById("tlfNr").value = ""
+    document.getElementById("epost").value = ""
+
 }
