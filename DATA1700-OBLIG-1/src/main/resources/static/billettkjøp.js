@@ -1,25 +1,24 @@
+//initaliserer et array utenfor scope av kjoepbillet slik at arrayet kan tas inn av flere funksjoner
+var array = JSON.parse(localStorage.getItem('antall')) || [];
 
-let billettArray = [];
 function kjoepBillett(){
-    //initaliserer et array
-
-    //let fValg = document.getElementById("filmvalg")
+    //Tar inputs fra alle feltene
+    let fValg = this.document.getElementById("fValg").value;
     let antall = this.document.getElementById("antall").value;
     let fNavn = this.document.getElementById("fNavn").value;
     let eNavn = this.document.getElementById("eNavn").value;
     let tlfNr = this.document.getElementById("tlfNr").value;
     let epost = this.document.getElementById("epost").value;
 
-    //legger verdier inn i arrayet
-    billettArray.push(antall,fNavn,eNavn,tlfNr,epost);
+    // bare en test inntil videre. gjør alle inputene til en string
+    var alleInputs = "Film: " + fValg +  ", Antall billetter: " + antall + ", Fornavn: " + fNavn
+                                + ", Etternavn: " +  eNavn + ", Telefonnummer: "+ tlfNr + ", Epost: "+ epost;
 
-    //Lagrer  arrayet i lokalstorage
-    localStorage.setItem("billettArray", JSON.stringify(billettArray));
+    //legger individuelle inputs inn i arrayet array og utvider størrelsen på arrayet
+    array.unshift(fValg,antall,fNavn,eNavn,tlfNr,epost)
 
-    //Skriver ut array
-    console.log("Antall billetter: " + localStorage.getItem(billettArray[0]) + ", Fornavn: " + billettArray[1] +
-                ", Etternavn: " + billettArray[2] + ", Telefonnummer: " + billettArray[3] +
-                ", Epost: " + billettArray[4]);
+    //setter alleinputs som et object i localstorage
+    localStorage.setItem("array", JSON.stringify(array))
 
     //Fjerner tekst fra input-feltene
     document.getElementById("antall").value = ""
@@ -27,14 +26,5 @@ function kjoepBillett(){
     document.getElementById("eNavn").value = ""
     document.getElementById("tlfNr").value = ""
     document.getElementById("epost").value = ""
-
-    document.getElementById("alleBilletter").innerHTML = parsed;
-    $("#alleBilletter").html(parsed);
 }
 
-function slettAlle(){
-    localStorage.getItem(billettArray)
-    for (i = 0; i < billettArray.length; i++){
-        console.log(billettArray[i])
-    }
-}
