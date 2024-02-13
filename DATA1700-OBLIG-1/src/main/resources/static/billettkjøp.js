@@ -26,5 +26,20 @@ function kjoepBillett(){
     document.getElementById("eNavn").value = ""
     document.getElementById("tlfNr").value = ""
     document.getElementById("epost").value = ""
+
+    visArray()
+
+    console.log("Alleinputs: " + alleInputs +" localstorage:" +  localStorage.getItem(array))
 }
 
+function visArray(){
+    var visArray = document.getElementById("alleBilletter");
+    //clearer listen slik at det ikke vises noe før vi vil det
+    visArray.innerHTML = " ";
+    //skaper et nytt element i listen i html med text fra arrayet
+    array.forEach(function(input) {
+        var nyBillett = document.createElement("li")
+        nyBillett.textContent = input;
+        visArray.appendChild(nyBillett)
+    })
+}
