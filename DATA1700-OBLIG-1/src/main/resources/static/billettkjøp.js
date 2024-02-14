@@ -3,7 +3,7 @@ var array = JSON.parse(localStorage.getItem('antall')) || [];
 
 function kjoepBillett(){
     //Tar inputs fra alle feltene
-    let fValg = this.document.getElementById("fValg").value;
+    //let fValg = this.document.getElementById("fValg").value;
     let antall = this.document.getElementById("antall").value;
     let fNavn = this.document.getElementById("fNavn").value;
     let eNavn = this.document.getElementById("eNavn").value;
@@ -11,11 +11,11 @@ function kjoepBillett(){
     let epost = this.document.getElementById("epost").value;
 
     // bare en test inntil videre. gjør alle inputene til en string
-    var alleInputs = "Film: " + fValg +  ", Antall billetter: " + antall + ", Fornavn: " + fNavn
+    var alleInputs = ", Antall billetter: " + antall + ", Fornavn: " + fNavn
                                 + ", Etternavn: " +  eNavn + ", Telefonnummer: "+ tlfNr + ", Epost: "+ epost;
 
     //legger individuelle inputs inn i arrayet array og utvider størrelsen på arrayet
-    array.unshift(fValg,antall,fNavn,eNavn,tlfNr,epost)
+    array.unshift(antall,fNavn,eNavn,tlfNr,epost)
 
     //setter alleinputs som et object i localstorage
     localStorage.setItem("array", JSON.stringify(array))
@@ -28,8 +28,6 @@ function kjoepBillett(){
     document.getElementById("epost").value = ""
 
     visArray()
-
-    console.log("Alleinputs: " + alleInputs +" localstorage:" +  localStorage.getItem(array))
 }
 
 function visArray(){
@@ -38,7 +36,7 @@ function visArray(){
     visArray.innerHTML = " ";
     //skaper et nytt element i listen i html med text fra arrayet
     array.forEach(function(input) {
-        var nyBillett = document.createElement("li")
+        var nyBillett = document.createElement("p")
         nyBillett.textContent = input;
         visArray.appendChild(nyBillett)
     })

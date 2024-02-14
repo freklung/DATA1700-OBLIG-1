@@ -9,6 +9,10 @@
             display: inline;
         }
 
+        p{
+            display: inline;
+        }
+
         #antall{
             margin-bottom: 20px;
             margin-top: 20px;
@@ -40,7 +44,7 @@
 
     <br>
     <label for="fNavn">Fornavn</label>
-    <input type="text" id="fNavn">
+    <input type="text" id="fNavn" pattern="_[a-zA-Z]">
 
     <br>
     <label for="eNavn">Etternavn</label>
@@ -61,9 +65,9 @@
         Alle billetter
     </h2>
 
-    <ul id="arrayDisplay">
+    <p id="arrayDisplay">
 
-    </ul>
+    </p>
 
     <label id="alleBilletter"> </label>
 
