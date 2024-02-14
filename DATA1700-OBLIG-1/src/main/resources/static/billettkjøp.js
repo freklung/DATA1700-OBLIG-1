@@ -41,3 +41,9 @@ function visArray(){
         visArray.appendChild(nyBillett)
     })
 }
+
+function slettBilletter(){
+    localStorage.clear()
+    var slettArray = document.getElementById("alleBilletter")
+    slettArray.replaceWith(" ");
+}
