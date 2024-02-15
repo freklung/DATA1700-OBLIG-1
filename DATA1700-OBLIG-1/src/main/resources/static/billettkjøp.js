@@ -1,11 +1,9 @@
-document.addEventListener("DOMContentLoaded", function (){
-
 //initaliserer et array utenfor scope av kjoepbillet slik at arrayet kan tas inn av flere funksjoner
 var array = JSON.parse(localStorage.getItem('antall')) || [];
 
 function kjoepBillett(){
     //Tar inputs fra alle feltene
-    //let fValg = this.document.getElementById("fValg").value;
+    let fValg = this.document.getElementById("fValg").value;
     let antall = this.document.getElementById("antall").value;
     let fNavn = this.document.getElementById("fNavn").value;
     let eNavn = this.document.getElementById("eNavn").value;
@@ -13,7 +11,7 @@ function kjoepBillett(){
     let epost = this.document.getElementById("epost").value;
 
     //legger individuelle inputs inn i arrayet array og utvider størrelsen på arrayet
-    array.unshift(antall,fNavn,eNavn,tlfNr,epost)
+    array.unshift(fValg,antall,fNavn,eNavn,tlfNr,epost)
 
     //setter alleinputs som et object i localstorage
     localStorage.setItem("array", JSON.stringify(array))
@@ -40,6 +38,13 @@ function visArray(){
     })
 }
 
+function slettBilletter(){
+    localStorage.clear()
+    var slettArray = document.getElementById("alleBilletter")
+    slettArray.replaceWith(" ");
+}
+
+document.addEventListener("DOMContentLoaded", function (){
 //Oppretter const data for inputfeltene i html filen
 const antallValid = document.getElementById("antall")
 const fNavnValid = document.getElementById("fNavn")
@@ -53,7 +58,7 @@ const enavnerror = document.getElementById("eNavnerror")
 const tlferror = document.getElementById("tlferror")
 const eposterror = document.getElementById("eposterror")
 
-const tlfRegexp = /^[0-9]/;
+const tlfRegexp = /[0-9]/;
 const epostRegexp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 function validerInput(inputFelt, feilMld, regex) {
     inputFelt.addEventListener("blur", () => {
@@ -64,15 +69,17 @@ function validerInput(inputFelt, feilMld, regex) {
     });
 }
 
+function validerNot0(inputfelt, feilmld){
+    inputfelt.addEventListener("blur", () =>{
+        feilmld.textContent = "";
+        if (inputfelt >= 0){
+            feilmld.textContent = "Du må velge antall billetter";
+        }
+});}
 
+validerNot0(antallValid, antallerror)
 validerInput(fNavnValid, fnavnerror, /^[a-zA-Z]/)
 validerInput(eNavnValid, enavnerror, /^[a-zA-Z]/ )
 validerInput(tlfNrValid, tlferror, tlfRegexp)
 validerInput(epostValid, eposterror, epostRegexp)
-
-function slettBilletter(){
-    localStorage.clear()
-    var slettArray = document.getElementById("alleBilletter")
-    slettArray.replaceWith(" ");
-}
 })
