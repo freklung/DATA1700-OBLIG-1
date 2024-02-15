@@ -37,12 +37,12 @@ function visArray() {
         var label = '';
         // setter format for printing av arrayets innhold
         switch (nummer %   6) {
-            case  0: label = 'fValg: '; break
-            case  1: label = 'Antall: '; break
-            case  2: label = 'fNavn: '; break
-            case  3: label = 'eNavn: '; break
-            case  4: label = 'tlfNr: '; break
-            case  5: label = 'epost: '; break
+            case  0: label = 'Film: '; break
+            case  1: label = 'Antall billetter: '; break
+            case  2: label = 'Fornavn: '; break
+            case  3: label = 'Etternavn: '; break
+            case  4: label = 'Telefon: '; break
+            case  5: label = 'Epost: '; break
         }
         //definerer innholdet til elementet nybillett
         nyBillett.textContent = label + input
