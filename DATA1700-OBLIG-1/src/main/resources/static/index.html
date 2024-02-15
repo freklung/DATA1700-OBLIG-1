@@ -3,30 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="stylesheet.css">
     <script src="billettkjøp.js"></script>
-    <style>
-        label{
-            display: inline;
-        }
-
-        p{
-            display: inline;
-        }
-
-        #antall{
-            margin-bottom: 20px;
-            margin-top: 20px;
-            max-width: 20px;
-        }
-
-        input{
-            margin-bottom: 5px;
-        }
-
-        button{
-            margin-bottom: 1vh;
-        }
-    </style>
 </head>
 <body>
     <h1>
@@ -36,27 +14,34 @@
     <label for="filmvalg">Velg film</label>
     <select name="filmvalg" id="filmvalg">
         <option value="film1">Film 1</option>
+        <option value="film2">Film 2</option>
+        <option value="film3">Film 3</option>
     </select>
 
     <br>
     <label for="antall">Antall</label>
     <input type="number" id="antall">
+    <span class="feilinput" id="antallerror"></span>
 
     <br>
     <label for="fNavn">Fornavn</label>
     <input type="text" id="fNavn" pattern="_[a-zA-Z]">
+    <span class="feilinput" id="fnavnerror"></span>
 
     <br>
     <label for="eNavn">Etternavn</label>
     <input type="text" id="eNavn">
+    <span class="feilinput" id="eNavnerror"></span>
 
     <br>
     <label for="tlfNr">Telefonnr</label>
     <input type="text" id="tlfNr">
+    <span class="feilinput" id="tlferror"></span>
 
     <br>
     <label for="epost">Epost</label>
     <input type="text" id="epost">
+    <span class="feilinput" id="eposterror"></span>
 
     <br>
     <button id="kjøp" onclick="kjoepBillett()">Kjøp billett</button>

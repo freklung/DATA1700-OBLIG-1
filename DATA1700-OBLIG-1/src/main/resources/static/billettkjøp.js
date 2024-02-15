@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function (){
+
 //initaliserer et array utenfor scope av kjoepbillet slik at arrayet kan tas inn av flere funksjoner
 var array = JSON.parse(localStorage.getItem('antall')) || [];
 
@@ -9,25 +11,6 @@ function kjoepBillett(){
     let eNavn = this.document.getElementById("eNavn").value;
     let tlfNr = this.document.getElementById("tlfNr").value;
     let epost = this.document.getElementById("epost").value;
-
-    var tlfValid = document.getElementById("tlfNr")
-    var epostValid = document.getElementById("epost")
-
-    var tlfRegExp = /^[0-9]+[+]^/
-    var epostEx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
-
-    if (!tlfRegExp.test(tlfValid.value)){
-        alert("Feil telefonnummer brur")
-        return false
-    }
-
-    if (epostEx.test(epostValid.value)){
-        alert("Bruhhh feil epost")
-    }
-
-    // bare en test inntil videre. gjør alle inputene til en string
-    var alleInputs = ", Antall billetter: " + antall + ", Fornavn: " + fNavn
-                                + ", Etternavn: " +  eNavn + ", Telefonnummer: "+ tlfNr + ", Epost: "+ epost;
 
     //legger individuelle inputs inn i arrayet array og utvider størrelsen på arrayet
     array.unshift(antall,fNavn,eNavn,tlfNr,epost)
@@ -57,8 +40,39 @@ function visArray(){
     })
 }
 
+//Oppretter const data for inputfeltene i html filen
+const antallValid = document.getElementById("antall")
+const fNavnValid = document.getElementById("fNavn")
+const eNavnValid = document.getElementById("eNavn")
+const tlfNrValid = document.getElementById("tlfNr")
+const epostValid = document.getElementById("epost")
+
+const antallerror = document.getElementById("antallerror")
+const fnavnerror = document.getElementById("fnavnerror")
+const enavnerror = document.getElementById("eNavnerror")
+const tlferror = document.getElementById("tlferror")
+const eposterror = document.getElementById("eposterror")
+
+const tlfRegexp = /^[0-9]/;
+const epostRegexp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+function validerInput(inputFelt, feilMld, regex) {
+    inputFelt.addEventListener("blur", () => {
+        feilMld.textContent = "";
+        if (!regex.test(inputFelt.value)) {
+            feilMld.textContent = "Du må angi korrekt informasjon!!";
+        }
+    });
+}
+
+
+validerInput(fNavnValid, fnavnerror, /^[a-zA-Z]/)
+validerInput(eNavnValid, enavnerror, /^[a-zA-Z]/ )
+validerInput(tlfNrValid, tlferror, tlfRegexp)
+validerInput(epostValid, eposterror, epostRegexp)
+
 function slettBilletter(){
     localStorage.clear()
     var slettArray = document.getElementById("alleBilletter")
     slettArray.replaceWith(" ");
 }
+})
