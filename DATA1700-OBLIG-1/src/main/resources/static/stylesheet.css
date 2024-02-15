@@ -2,8 +2,8 @@ label{
     display: inline;
 }
 
-p{
-    display: inline;
+p {
+    margin-bottom:  1em; /* Adjust as needed */
 }
 
 #antall{
