@@ -10,6 +10,21 @@ function kjoepBillett(){
     let tlfNr = this.document.getElementById("tlfNr").value;
     let epost = this.document.getElementById("epost").value;
 
+    var tlfValid = document.getElementById("tlfNr")
+    var epostValid = document.getElementById("epost")
+
+    var tlfRegExp = /^[0-9]+[+]^/
+    var epostEx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+
+    if (!tlfRegExp.test(tlfValid.value)){
+        alert("Feil telefonnummer brur")
+        return false
+    }
+
+    if (epostEx.test(epostValid.value)){
+        alert("Bruhhh feil epost")
+    }
+
     // bare en test inntil videre. gjør alle inputene til en string
     var alleInputs = ", Antall billetter: " + antall + ", Fornavn: " + fNavn
                                 + ", Etternavn: " +  eNavn + ", Telefonnummer: "+ tlfNr + ", Epost: "+ epost;
