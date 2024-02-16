@@ -95,7 +95,8 @@ function validerNot0(inputfelt, feilmld){
         if (inputfelt >= 0){
             feilmld.textContent = "Du må velge antall billetter";
         }
-});}
+    })
+}
 
 //kaller valideringsfunksjonene på de forskjellige inputfeltene
 validerNot0(antallValid, antallerror)
