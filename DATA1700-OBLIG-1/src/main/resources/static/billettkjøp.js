@@ -11,20 +11,20 @@ function kjoepBillett(){
     let epost = this.document.getElementById("epost").value;
 
     //legger individuelle inputs inn i arrayet array og utvider størrelsen på arrayet
-    array.unshift(fValg,antall,fNavn,eNavn,tlfNr,epost)
+    array.unshift(fValg,antall,fNavn,eNavn,tlfNr,epost);
 
     //setter alleinputs som et object i localstorage
-    localStorage.setItem("array", JSON.stringify(array))
+    localStorage.setItem("array", JSON.stringify(array));
 
     //Fjerner tekst fra input-feltene
-    document.getElementById("antall").value = ""
-    document.getElementById("fNavn").value = ""
-    document.getElementById("eNavn").value = ""
-    document.getElementById("tlfNr").value = ""
-    document.getElementById("epost").value = ""
+    document.getElementById("antall").value = "";
+    document.getElementById("fNavn").value = "";
+    document.getElementById("eNavn").value = "";
+    document.getElementById("tlfNr").value = "";
+    document.getElementById("epost").value = "";
 
     //kaller den neste funksjonen
-    visArray()
+    visArray();
 }
 
 function visArray() {
@@ -37,16 +37,16 @@ function visArray() {
         var label = '';
         // setter format for printing av arrayets innhold
         switch (nummer %   6) {
-            case  0: label = 'Film: '; break
-            case  1: label = 'Antall billetter: '; break
-            case  2: label = 'Fornavn: '; break
-            case  3: label = 'Etternavn: '; break
-            case  4: label = 'Telefon: '; break
-            case  5: label = 'Epost: '; break
+            case  0: label = 'Film: '; break;
+            case  1: label = 'Antall billetter: '; break;
+            case  2: label = 'Fornavn: '; break;
+            case  3: label = 'Etternavn: '; break;
+            case  4: label = 'Telefon: '; break;
+            case  5: label = 'Epost: '; break;
         }
         //definerer innholdet til elementet nybillett
-        nyBillett.textContent = label + input
-        visArray.appendChild(nyBillett)
+        nyBillett.textContent = label + input;
+        visArray.appendChild(nyBillett);
     });
 }
 
@@ -61,17 +61,17 @@ function slettBilletter(){
 //venter til nettsiden er lastet inn med å kjøre skriptet. uten dette vil vi bare få masse typeerror meldinger
 document.addEventListener("DOMContentLoaded", function (){
 //Oppretter const data for inputfeltene i html filen
-const antallValid = document.getElementById("antall")
-const fNavnValid = document.getElementById("fNavn")
-const eNavnValid = document.getElementById("eNavn")
-const tlfNrValid = document.getElementById("tlfNr")
+const antallValid = document.getElementById("antall");
+const fNavnValid = document.getElementById("fNavn");
+const eNavnValid = document.getElementById("eNavn");
+const tlfNrValid = document.getElementById("tlfNr");
 const epostValid = document.getElementById("epost");
 
 // oppretter const data for hvert felt av errormeldingene i html
-const antallError = document.getElementById("antallerror")
-const fnavnError = document.getElementById("fnavnerror")
-const enavnError = document.getElementById("eNavnerror")
-const tlfError = document.getElementById("tlferror")
+const antallError = document.getElementById("antallerror");
+const fnavnError = document.getElementById("fnavnerror");
+const enavnError = document.getElementById("eNavnerror");
+const tlfError = document.getElementById("tlferror");
 const epostError = document.getElementById("eposterror");
 
 // definerer regex for hvordan epost og
@@ -95,13 +95,13 @@ function validerNot0(inputFelt, feilMld){
         if (inputFelt >= 0){
             feilMld.textContent = "Du må velge antall billetter";
         }
-    })
+    });
 }
 
 //kaller valideringsfunksjonene på de forskjellige inputfeltene
-validerNot0(antallValid, antallError)
-validerInput(fNavnValid, fnavnError, /^[a-zA-Z]/)
-validerInput(eNavnValid, enavnError, /^[a-zA-Z]/ )
-validerInput(tlfNrValid, tlfError, tlfRegexp)
-validerInput(epostValid, epostError, epostRegexp)
+validerNot0(antallValid, antallError);
+validerInput(fNavnValid, fnavnError, /^[a-zA-Z]/);
+validerInput(eNavnValid, enavnError, /^[a-zA-Z]/ );
+validerInput(tlfNrValid, tlfError, tlfRegexp);
+validerInput(epostValid, epostError, epostRegexp);
 })
