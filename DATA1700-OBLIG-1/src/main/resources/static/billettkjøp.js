@@ -68,11 +68,11 @@ const tlfNrValid = document.getElementById("tlfNr")
 const epostValid = document.getElementById("epost");
 
 // oppretter const data for hvert felt av errormeldingene i html
-const antallerror = document.getElementById("antallerror")
-const fnavnerror = document.getElementById("fnavnerror")
-const enavnerror = document.getElementById("eNavnerror")
-const tlferror = document.getElementById("tlferror")
-const eposterror = document.getElementById("eposterror");
+const antallError = document.getElementById("antallerror")
+const fnavnError = document.getElementById("fnavnerror")
+const enavnError = document.getElementById("eNavnerror")
+const tlfError = document.getElementById("tlferror")
+const epostError = document.getElementById("eposterror");
 
 // definerer regex for hvordan epost og
 const tlfRegexp = /[0-9]/;
@@ -87,21 +87,21 @@ function validerInput(inputFelt, feilMld, regex) {
 }
 
 //sjekker at antall ikke er lik 0
-function validerNot0(inputfelt, feilmld){
-    inputfelt.addEventListener("blur", () =>{
+function validerNot0(inputFelt, feilMld){
+    inputFelt.addEventListener("blur", () =>{
         //setter feilmeldingen til å defaulte til å være blank
-        feilmld.textContent = "";
+        feilMld.textContent = "";
         //hvis man angir antall billetter til å være lik eller mindre vil siden si ifra om dette
-        if (inputfelt >= 0){
-            feilmld.textContent = "Du må velge antall billetter";
+        if (inputFelt >= 0){
+            feilMld.textContent = "Du må velge antall billetter";
         }
     })
 }
 
 //kaller valideringsfunksjonene på de forskjellige inputfeltene
-validerNot0(antallValid, antallerror)
-validerInput(fNavnValid, fnavnerror, /^[a-zA-Z]/)
-validerInput(eNavnValid, enavnerror, /^[a-zA-Z]/ )
-validerInput(tlfNrValid, tlferror, tlfRegexp)
-validerInput(epostValid, eposterror, epostRegexp)
+validerNot0(antallValid, antallError)
+validerInput(fNavnValid, fnavnError, /^[a-zA-Z]/)
+validerInput(eNavnValid, enavnError, /^[a-zA-Z]/ )
+validerInput(tlfNrValid, tlfError, tlfRegexp)
+validerInput(epostValid, epostError, epostRegexp)
 })
